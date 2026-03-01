@@ -95,7 +95,7 @@ export const translations = {
   },
   kk: {
     // General
-    siteName: "Тест-платформа",
+    siteName: "PIRLS Bilim",
     siteDescription: "Тест тапсырмаларына арналған платформа",
     language: "Тіл",
     russian: "Русский",
