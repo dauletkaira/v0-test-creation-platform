@@ -47,21 +47,3 @@ CREATE TABLE IF NOT EXISTS results (
   answers JSONB,
   completed_at TIMESTAMPTZ DEFAULT now()
 );
-
--- Enable RLS
-ALTER TABLE quizzes ENABLE ROW LEVEL SECURITY;
-ALTER TABLE questions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE participants ENABLE ROW LEVEL SECURITY;
-ALTER TABLE results ENABLE ROW LEVEL SECURITY;
-
--- Public read policies for quizzes and questions
-CREATE POLICY "public_read_quizzes" ON quizzes FOR SELECT USING (true);
-CREATE POLICY "public_read_questions" ON questions FOR SELECT USING (true);
-
--- Public policies for participants
-CREATE POLICY "public_insert_participants" ON participants FOR INSERT WITH CHECK (true);
-CREATE POLICY "public_read_participants" ON participants FOR SELECT USING (true);
-
--- Public policies for results
-CREATE POLICY "public_insert_results" ON results FOR INSERT WITH CHECK (true);
-CREATE POLICY "public_read_results" ON results FOR SELECT USING (true);
