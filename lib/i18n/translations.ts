@@ -3,8 +3,8 @@ export type Locale = "ru" | "kk"
 export const translations = {
   ru: {
     // General
-    siteName: "Тест-платформа",
-    siteDescription: "Платформа для тестовых заданий",
+    siteName: "PIRLS Bilim",
+    siteDescription: "Представляет №6 школа-лицей",
     language: "Язык",
     russian: "Русский",
     kazakh: "Қазақша",
