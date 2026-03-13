@@ -52,6 +52,7 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
   const isEditing = !!quizId
 
   const [quizType, setQuizType] = useState<"text" | "video">("text")
+  const [quizLanguage, setQuizLanguage] = useState<"ru" | "kk">("ru")
   const [titleRu, setTitleRu] = useState("")
   const [titleKk, setTitleKk] = useState("")
   const [contentRu, setContentRu] = useState("")
@@ -122,11 +123,11 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
 
     const payload = {
       quiz: {
-        title_ru: titleRu,
-        title_kk: titleKk,
+        title_ru: quizLanguage === "ru" ? titleRu : "",
+        title_kk: quizLanguage === "kk" ? titleKk : "",
         type: quizType,
-        content_ru: quizType === "text" ? contentRu : null,
-        content_kk: quizType === "text" ? contentKk : null,
+        content_ru: quizLanguage === "ru" && quizType === "text" ? contentRu : null,
+        content_kk: quizLanguage === "kk" && quizType === "text" ? contentKk : null,
         video_url: quizType === "video" ? videoUrl : null,
       },
       questions,
@@ -198,59 +199,65 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
               <CardTitle>{isEditing ? t("editQuiz") : t("createQuiz")}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <Label>{t("quizType")}</Label>
-                <Select
-                  value={quizType}
-                  onValueChange={(v) => setQuizType(v as "text" | "video")}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="text">{t("textBased")}</SelectItem>
-                    <SelectItem value="video">{t("videoBased")}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
-                  <Label>{t("quizTitleRu")}</Label>
-                  <Input
-                    value={titleRu}
-                    onChange={(e) => setTitleRu(e.target.value)}
-                    required
-                  />
+                  <Label>{t("quizLanguage") || "Язык теста"}</Label>
+                  <Select
+                    value={quizLanguage}
+                    onValueChange={(v) => setQuizLanguage(v as "ru" | "kk")}
+                    disabled={isEditing}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="ru">Русский</SelectItem>
+                      <SelectItem value="kk">Қазақша</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label>{t("quizTitleKk")}</Label>
-                  <Input
-                    value={titleKk}
-                    onChange={(e) => setTitleKk(e.target.value)}
-                    required
-                  />
+                  <Label>{t("quizType")}</Label>
+                  <Select
+                    value={quizType}
+                    onValueChange={(v) => setQuizType(v as "text" | "video")}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="text">{t("textBased")}</SelectItem>
+                      <SelectItem value="video">{t("videoBased")}</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label>{quizLanguage === "ru" ? t("quizTitleRu") : t("quizTitleKk")}</Label>
+                <Input
+                  value={quizLanguage === "ru" ? titleRu : titleKk}
+                  onChange={(e) =>
+                    quizLanguage === "ru"
+                      ? setTitleRu(e.target.value)
+                      : setTitleKk(e.target.value)
+                  }
+                  required
+                />
               </div>
 
               {quizType === "text" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-2">
-                    <Label>{t("contentRu")}</Label>
-                    <Textarea
-                      value={contentRu}
-                      onChange={(e) => setContentRu(e.target.value)}
-                      rows={8}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Label>{t("contentKk")}</Label>
-                    <Textarea
-                      value={contentKk}
-                      onChange={(e) => setContentKk(e.target.value)}
-                      rows={8}
-                    />
-                  </div>
+                <div className="flex flex-col gap-2">
+                  <Label>{quizLanguage === "ru" ? t("contentRu") : t("contentKk")}</Label>
+                  <Textarea
+                    value={quizLanguage === "ru" ? contentRu : contentKk}
+                    onChange={(e) =>
+                      quizLanguage === "ru"
+                        ? setContentRu(e.target.value)
+                        : setContentKk(e.target.value)
+                    }
+                    rows={8}
+                  />
                 </div>
               )}
 
@@ -303,22 +310,15 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
               <CardContent className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <Label>{t("questionRu")}</Label>
+                    <Label>{quizLanguage === "ru" ? t("questionRu") : t("questionKk")}</Label>
                     <Textarea
-                      value={question.question_ru}
+                      value={quizLanguage === "ru" ? question.question_ru : question.question_kk}
                       onChange={(e) =>
-                        updateQuestion(index, "question_ru", e.target.value)
-                      }
-                      rows={2}
-                      required
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Label>{t("questionKk")}</Label>
-                    <Textarea
-                      value={question.question_kk}
-                      onChange={(e) =>
-                        updateQuestion(index, "question_kk", e.target.value)
+                        updateQuestion(
+                          index,
+                          quizLanguage === "ru" ? "question_ru" : "question_kk",
+                          e.target.value
+                        )
                       }
                       rows={2}
                       required
@@ -329,50 +329,25 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
                 <Separator />
 
                 {(["a", "b", "c", "d"] as const).map((opt) => (
-                  <div
-                    key={opt}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                  >
-                    <div className="flex flex-col gap-2">
-                      <Label>
-                        {t(`option${opt.toUpperCase()}` as any)} (рус)
-                      </Label>
-                      <Input
-                        value={
-                          question[
-                            `option_${opt}_ru` as keyof Question
-                          ] as string
-                        }
-                        onChange={(e) =>
-                          updateQuestion(
-                            index,
-                            `option_${opt}_ru` as keyof Question,
-                            e.target.value
-                          )
-                        }
-                        required
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <Label>
-                        {t(`option${opt.toUpperCase()}` as any)} (каз)
-                      </Label>
-                      <Input
-                        value={
-                          question[
-                            `option_${opt}_kk` as keyof Question
-                          ] as string
-                        }
-                        onChange={(e) =>
-                          updateQuestion(
-                            index,
-                            `option_${opt}_kk` as keyof Question,
-                            e.target.value
-                          )
-                        }
-                        required
-                      />
-                    </div>
+                  <div key={opt} className="flex flex-col gap-2">
+                    <Label>
+                      {t(`option${opt.toUpperCase()}` as any)}
+                    </Label>
+                    <Input
+                      value={
+                        question[
+                          `option_${opt}_${quizLanguage}` as keyof Question
+                        ] as string
+                      }
+                      onChange={(e) =>
+                        updateQuestion(
+                          index,
+                          `option_${opt}_${quizLanguage}` as keyof Question,
+                          e.target.value
+                        )
+                      }
+                      required
+                    />
                   </div>
                 ))}
 

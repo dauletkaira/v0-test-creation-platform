@@ -49,6 +49,7 @@ export const translations = {
     textBased: "По тексту",
     videoBased: "По видео",
     quizType: "Тип теста",
+    quizLanguage: "Язык теста",
 
     // Results
     results: "Результаты",
@@ -146,6 +147,7 @@ export const translations = {
     textBased: "Мәтін бойынша",
     videoBased: "Бейне бойынша",
     quizType: "Тест түрі",
+    quizLanguage: "Тест тілі",
 
     // Results
     results: "Нәтижелер",
