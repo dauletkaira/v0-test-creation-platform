@@ -112,7 +112,7 @@ export const translations = {
   kk: {
     // General
     siteName: "PIRLS Bilim",
-    siteDescription: "Тест тапсырмаларына арналған платформа",
+    siteDescription: "№6 мектеп-лицейі ұсынады",
     language: "Тіл",
     russian: "Русский",
     kazakh: "Қазақша",
