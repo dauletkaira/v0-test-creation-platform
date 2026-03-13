@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
+const nunito = Nunito({ 
+  subsets: ["latin", "cyrillic"], 
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800"]
+});
 
 export const metadata: Metadata = {
   title: 'Тест-платформа | Платформа тестовых заданий',
@@ -35,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${_inter.variable} font-sans antialiased`}>
+      <body className={`${nunito.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
