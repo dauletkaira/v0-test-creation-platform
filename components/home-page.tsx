@@ -242,7 +242,7 @@ export default function HomePage() {
                   <p className="text-base font-bold text-foreground">
                     {lastName} {firstName}
                   </p>
-                  <p className="text-sm text-muted-foreground">{school}</p>
+                  <p className="text-base text-muted-foreground">{school}</p>
                 </div>
               </div>
               <Button
