@@ -70,8 +70,16 @@ export default function QuizEditor({ quizId }: QuizEditorProps) {
         const res = await fetch(`/api/quizzes/${quizId}`)
         const data = await res.json()
         setQuizType(data.type)
-        setTitleRu(data.title_ru)
-        setTitleKk(data.title_kk)
+        
+        // Detect quiz language based on which title is filled
+        if (data.title_kk && !data.title_ru) {
+          setQuizLanguage("kk")
+        } else if (data.title_ru) {
+          setQuizLanguage("ru")
+        }
+        
+        setTitleRu(data.title_ru || "")
+        setTitleKk(data.title_kk || "")
         setContentRu(data.content_ru || "")
         setContentKk(data.content_kk || "")
         setVideoUrl(data.video_url || "")
