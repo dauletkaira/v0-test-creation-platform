@@ -226,7 +226,7 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
         {/* Question */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl text-pretty">{questionText}</CardTitle>
+            <CardTitle className="text-xl text-pretty break-words leading-relaxed">{questionText}</CardTitle>
           </CardHeader>
           <CardContent>
             <RadioGroup
