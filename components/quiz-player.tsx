@@ -139,26 +139,26 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
   const question = quiz.questions[currentQuestion]
   const progress = ((currentQuestion + 1) / quiz.questions.length) * 100
   const isLastQuestion = currentQuestion === quiz.questions.length - 1
-  const quizTitle = locale === "kk" ? quiz.title_kk : quiz.title_ru
+  const quizTitle = locale === "kk" ? (quiz.title_kk || quiz.title_ru) : (quiz.title_ru || quiz.title_kk)
   const questionText =
-    locale === "kk" ? question.question_kk : question.question_ru
+    locale === "kk" ? (question.question_kk || question.question_ru) : (question.question_ru || question.question_kk)
 
   const options = [
     {
       key: "a",
-      text: locale === "kk" ? question.option_a_kk : question.option_a_ru,
+      text: locale === "kk" ? (question.option_a_kk || question.option_a_ru) : (question.option_a_ru || question.option_a_kk),
     },
     {
       key: "b",
-      text: locale === "kk" ? question.option_b_kk : question.option_b_ru,
+      text: locale === "kk" ? (question.option_b_kk || question.option_b_ru) : (question.option_b_ru || question.option_b_kk),
     },
     {
       key: "c",
-      text: locale === "kk" ? question.option_c_kk : question.option_c_ru,
+      text: locale === "kk" ? (question.option_c_kk || question.option_c_ru) : (question.option_c_ru || question.option_c_kk),
     },
     {
       key: "d",
-      text: locale === "kk" ? question.option_d_kk : question.option_d_ru,
+      text: locale === "kk" ? (question.option_d_kk || question.option_d_ru) : (question.option_d_ru || question.option_d_kk),
     },
   ]
 

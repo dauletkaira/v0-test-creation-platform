@@ -61,8 +61,11 @@ export default function AdminDashboard() {
     router.refresh()
   }
 
-  const getTitle = (quiz: Quiz) =>
-    locale === "kk" ? quiz.title_kk : quiz.title_ru
+  const getTitle = (quiz: Quiz) => {
+    const title = locale === "kk" ? quiz.title_kk : quiz.title_ru
+    if (title) return title
+    return locale === "kk" ? quiz.title_ru : quiz.title_kk
+  }
 
   return (
     <div className="min-h-screen bg-muted/30">
