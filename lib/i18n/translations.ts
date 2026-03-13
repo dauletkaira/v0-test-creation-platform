@@ -31,7 +31,11 @@ export const translations = {
     enterFirstName: "Введите имя",
     enterLastName: "Введите фамилию",
     enterSchool: "Введите название школы",
+    selectSchool: "Выберите школу",
     fillAllFields: "Заполните все поля",
+    continueToQuizzes: "Продолжить",
+    stepInfo: "Ваши данные",
+    stepQuizzes: "Выбор теста",
 
     // Quiz
     question: "Вопрос",
@@ -123,7 +127,11 @@ export const translations = {
     enterFirstName: "Атыңызды енгізіңіз",
     enterLastName: "Тегіңізді енгізіңіз",
     enterSchool: "Мектеп атауын енгізіңіз",
+    selectSchool: "Мектепті таңдаңыз",
     fillAllFields: "Барлық өрістерді толтырыңыз",
+    continueToQuizzes: "Жалғастыру",
+    stepInfo: "Деректеріңіз",
+    stepQuizzes: "Тест таңдау",
 
     // Quiz
     question: "Сұрақ",
