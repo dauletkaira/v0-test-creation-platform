@@ -92,6 +92,19 @@ export const translations = {
     quizUpdated: "Тест обновлен",
     quizDeleted: "Тест удален",
     questionsCount: "Вопросов",
+    // Language tabs
+    russianSection: "Русский отдел",
+    kazakhSection: "Казахский отдел",
+    russianTab: "Русский",
+    kazakhTab: "Казахский",
+    titleRu: "Название (русский)",
+    titleKk: "Название (казахский)",
+    contentRuLabel: "Текст для чтения",
+    contentKkLabel: "Текст для чтения",
+    questionsRu: "Вопросы (русский)",
+    questionsKk: "Вопросы (казахский)",
+    questionNRu: "Вопрос",
+    langTabHint: "Заполните каждый отдел отдельно",
   },
   kk: {
     // General
@@ -184,6 +197,19 @@ export const translations = {
     quizUpdated: "Тест жаңартылды",
     quizDeleted: "Тест жойылды",
     questionsCount: "Сұрақтар",
+    // Language tabs
+    russianSection: "Орыс бөлімі",
+    kazakhSection: "Қазақ бөлімі",
+    russianTab: "Орысша",
+    kazakhTab: "Қазақша",
+    titleRu: "Атауы (орысша)",
+    titleKk: "Атауы (қазақша)",
+    contentRuLabel: "Оқуға арналған мәтін",
+    contentKkLabel: "Оқуға арналған мәтін",
+    questionsRu: "Сұрақтар (орысша)",
+    questionsKk: "Сұрақтар (қазақша)",
+    questionNRu: "Сұрақ",
+    langTabHint: "Әр бөлімді жеке толтырыңыз",
   },
 } as const
 
