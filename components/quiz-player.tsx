@@ -175,7 +175,7 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-4 py-6">
+      <main className="mx-auto max-w-4xl px-4 py-6 overflow-hidden">
         {/* Content section - Text or Video */}
         {quiz.type === "text" && (quiz.content_ru || quiz.content_kk) && currentQuestion === 0 && (
           <Card className="mb-6">
@@ -225,8 +225,8 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
 
         {/* Question */}
         <Card>
-          <CardHeader>
-            <CardTitle className="text-xl text-pretty break-words leading-relaxed">{questionText}</CardTitle>
+          <CardHeader className="overflow-hidden">
+            <CardTitle className="text-xl text-pretty break-words leading-relaxed w-full">{questionText}</CardTitle>
           </CardHeader>
           <CardContent>
             <RadioGroup
