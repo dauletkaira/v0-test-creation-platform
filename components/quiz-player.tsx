@@ -224,9 +224,9 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
         </div>
 
         {/* Question */}
-        <Card>
+        <Card className="w-full">
           <CardHeader className="overflow-hidden">
-            <CardTitle className="text-xl text-pretty break-words leading-relaxed w-full">{questionText}</CardTitle>
+            <CardTitle className="text-xl text-pretty break-all leading-relaxed min-w-0">{questionText}</CardTitle>
           </CardHeader>
           <CardContent>
             <RadioGroup
@@ -250,7 +250,7 @@ export default function QuizPlayer({ quizId }: { quizId: string }) {
                     value={option.key}
                     id={`option-${option.key}`}
                   />
-                  <span className="text-sm leading-relaxed">{option.text}</span>
+                  <span className="text-sm leading-relaxed break-all min-w-0">{option.text}</span>
                 </Label>
               ))}
             </RadioGroup>
