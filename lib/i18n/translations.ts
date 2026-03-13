@@ -28,10 +28,15 @@ export const translations = {
     startQuiz: "Начать тест",
     selectQuiz: "Выберите тест",
     noQuizzes: "Пока нет доступных тестов",
+    start: "Начать",
     enterFirstName: "Введите имя",
     enterLastName: "Введите фамилию",
     enterSchool: "Введите название школы",
+    selectSchool: "Выберите школу",
     fillAllFields: "Заполните все поля",
+    continueToQuizzes: "Продолжить",
+    stepInfo: "Ваши данные",
+    stepQuizzes: "Выбор теста",
 
     // Quiz
     question: "Вопрос",
@@ -44,6 +49,7 @@ export const translations = {
     textBased: "По тексту",
     videoBased: "По видео",
     quizType: "Тип теста",
+    quizLanguage: "Язык теста",
 
     // Results
     results: "Результаты",
@@ -120,10 +126,15 @@ export const translations = {
     startQuiz: "Тестті бастау",
     selectQuiz: "Тестті таңдаңыз",
     noQuizzes: "Қол жетімді тесттер жоқ",
+    start: "Бастау",
     enterFirstName: "Атыңызды енгізіңіз",
     enterLastName: "Тегіңізді енгізіңіз",
     enterSchool: "Мектеп атауын енгізіңіз",
+    selectSchool: "Мектепті таңдаңыз",
     fillAllFields: "Барлық өрістерді толтырыңыз",
+    continueToQuizzes: "Жалғастыру",
+    stepInfo: "Деректеріңіз",
+    stepQuizzes: "Тест таңдау",
 
     // Quiz
     question: "Сұрақ",
@@ -136,6 +147,7 @@ export const translations = {
     textBased: "Мәтін бойынша",
     videoBased: "Бейне бойынша",
     quizType: "Тест түрі",
+    quizLanguage: "Тест тілі",
 
     // Results
     results: "Нәтижелер",

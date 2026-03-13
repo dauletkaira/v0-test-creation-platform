@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin", "cyrillic"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const nunito = Nunito({ 
+  subsets: ["latin", "cyrillic"], 
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800"]
+});
 
 export const metadata: Metadata = {
   title: 'Тест-платформа | Платформа тестовых заданий',
@@ -35,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
+    <html lang="ru">
+      <body className={`${nunito.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
