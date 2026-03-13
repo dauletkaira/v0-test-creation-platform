@@ -98,6 +98,16 @@ export const translations = {
     quizUpdated: "Тест обновлен",
     quizDeleted: "Тест удален",
     questionsCount: "Вопросов",
+
+    // Schools
+    schools: "Школы",
+    addSchool: "Добавить школу",
+    schoolName: "Название школы",
+    enterSchoolName: "Введите название школы",
+    schoolAdded: "Школа добавлена",
+    deleteSchool: "Удалить школу",
+    confirmDeleteSchool: "Вы уверены, что хотите удалить эту школу?",
+    noSchools: "Нет добавленных школ",
   },
   kk: {
     // General
@@ -196,6 +206,16 @@ export const translations = {
     quizUpdated: "Тест жаңартылды",
     quizDeleted: "Тест жойылды",
     questionsCount: "Сұрақтар",
+
+    // Schools
+    schools: "Мектептер",
+    addSchool: "Мектеп қосу",
+    schoolName: "Мектеп атауы",
+    enterSchoolName: "Мектеп атауын енгізіңіз",
+    schoolAdded: "Мектеп қосылды",
+    deleteSchool: "Мектепті жою",
+    confirmDeleteSchool: "Бұл мектепті жоюға сенімдісіз бе?",
+    noSchools: "Қосылған мектептер жоқ",
   },
 } as const
 
