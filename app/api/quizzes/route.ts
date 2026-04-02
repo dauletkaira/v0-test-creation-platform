@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/admin"
-import { createClient } from "@/lib/supabase/server"
 
-// GET all quizzes (public)
+// GET all quizzes (public - uses admin client to bypass RLS)
 export async function GET() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const { data, error } = await supabase
     .from("quizzes")
     .select("*, questions(id)")
