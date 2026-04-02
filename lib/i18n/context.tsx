@@ -13,12 +13,14 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("ru")
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem("locale") as Locale | null
     if (saved && (saved === "ru" || saved === "kk")) {
       setLocaleState(saved)
     }
+    setMounted(true)
   }, [])
 
   const setLocale = useCallback((newLocale: Locale) => {
@@ -32,6 +34,16 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     },
     [locale]
   )
+
+  if (!mounted) {
+    return (
+      <I18nContext.Provider value={{ locale, setLocale, t }}>
+        <div style={{ visibility: "hidden" }} suppressHydrationWarning>
+          {children}
+        </div>
+      </I18nContext.Provider>
+    )
+  }
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t }}>
