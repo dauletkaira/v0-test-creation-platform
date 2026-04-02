@@ -53,7 +53,7 @@ export default function HomePage() {
     try {
       const res = await fetch("/api/schools")
       const data = await res.json()
-      setSchools(data)
+      setSchools(Array.isArray(data) ? data : [{ id: "default", name: "№6 школа-лицей" }])
     } catch {
       setSchools([{ id: "default", name: "№6 школа-лицей" }])
     } finally {
@@ -67,9 +67,9 @@ export default function HomePage() {
     try {
       const res = await fetch("/api/quizzes")
       const data = await res.json()
-      setQuizzes(data)
+      setQuizzes(Array.isArray(data) ? data : [])
     } catch {
-      // error fetching
+      setQuizzes([])
     } finally {
       setLoadingQuizzes(false)
     }
